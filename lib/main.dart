@@ -5,7 +5,6 @@ import 'package:fluttermk2/config/palette.dart';
 import 'package:fluttermk2/screens/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/home.dart';
-import 'screens/auth/auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LitAuthInit(
+      authProviders: const AuthProviders(
+        emailAndPassword: true,
+        google: true,
+        apple: true,
+        twitter: true,
+        github: true,
+      ),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Material App',
@@ -30,11 +36,11 @@ class MyApp extends StatelessWidget {
           ),
         ),
 
-        // home: const LitAuthState(
-        //   authenticated: Home(),
-        //   unauthenticated: Unauthenticated(),
-        // ),
-        home: const SplashScreen(),
+        home: const LitAuthState(
+          authenticated: HomeScreen(),
+          unauthenticated: SplashScreen(),
+        ),
+        //home: const SplashScreen(),
       ),
     );
   }

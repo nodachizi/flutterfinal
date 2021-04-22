@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Signed in'),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             context.signOut();
             Navigator.of(context).push(AuthScreen.route);
